@@ -4,8 +4,14 @@
 import * as React from 'react'
 // import Globe from '../globe'
 
-const loadGlobe = () => import(/* webpackPrefetch: true */ '../globe')
-const Globe = React.lazy(loadGlobe)
+// const loadGlobe = () => import(/* webpackPrefetch: true */ '../globe')
+// const Globe = React.lazy(loadGlobe)
+
+/*
+adding in webpackPrefect means webpack will load this as soon as the main page is finished loading, so we don't
+need to worry about loading as soon as we focus or mouseEnter, because that loading will have already started
+*/
+const Globe = React.lazy(() => import(/* webpackPrefetch: true */ '../globe'))
 
 function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
@@ -23,8 +29,8 @@ function App() {
     >
       <label
         style={{marginBottom: '1rem'}}
-        onMouseEnter={loadGlobe}
-        onFocus={loadGlobe}
+        // onMouseEnter={loadGlobe}
+        // onFocus={loadGlobe}
       >
         <input
           type="checkbox"
