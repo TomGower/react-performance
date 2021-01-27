@@ -40,6 +40,9 @@ function App() {
         {' show globe'}
       </label>
       <div style={{width: 400, height: 400}}>
+      {/* In a future version of React, React will wait on showing fallback for certain amount of time. To be covered
+      in the future in discussion of concurrent React. There will be implication for mounting vs. suspense. Because of
+      those, KCD wraps entire show globe ternary operator in React.Suspense instead of just Globe like I do. */}
         {showGlobe ?
           <React.Suspense fallback={<div>loading...</div>}>
             <Globe />
