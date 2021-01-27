@@ -9,10 +9,6 @@ const Globe = React.lazy(() => import('../globe'))
 function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
 
-  // 🐨 wrap the code below in a <React.Suspense /> component
-  // with a fallback.
-  // 💰 try putting it in a few different places and observe how that
-  // impacts the user experience.
   return (
     <div
       style={{
