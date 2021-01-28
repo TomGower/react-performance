@@ -40,14 +40,17 @@ function AppProvider({children}) {
     dogName: '',
     grid: initialGrid,
   })
+
+  /*
+  This memoization was done to improve performance, so we didn't re-render all the time, because dispatch was known to be
+  a stable function from the useReducer. That means we can just use the non-memoized values, because they won't create
+  re-renders unless they're supposed to re-render because the actual values change.
+  */
   // const value = React.useMemo(() => [state, dispatch], [state])
 
-  const stateValue = React.useMemo(() => state, [state])
-  const dispatchValue = React.useMemo(() => dispatch, [dispatch])
-
   return (
-    <StateContext.Provider value={stateValue}>
-      <DispatchContext.Provider value={dispatchValue}>
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
         {children}
       </DispatchContext.Provider>
     </StateContext.Provider>
