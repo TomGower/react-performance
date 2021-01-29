@@ -54,6 +54,16 @@ function AppProvider({children}) {
   )
 }
 
+/*
+KCD did this one somewhat different, creating a separate useReducer function for the DogNameContext. I can see how
+this makes sense, even if I didn't think of it directly. This has a couple implications. If the dispatch function
+takes a while to run even if you're just updating the dogName, because of the other variables, then dogName makes
+a lot more sense (but if this is the case, then nobody should ever be using Redux, at all). Alternatively, there
+could be a great deal of complexity that you don't need in just a dogNameReducer. On the whole, though, I'm not
+completely sure I follow why, and am not convinced it's necessary. But maybe I should just be slavishly imitating
+him because he's the boss, like I would a real senior engineer who says "This is the way" and "I have spoken."
+*/
+
 function useAppDogName() {
   const context = React.useContext(AppDogNameContext)
   // eslint-disable-next-line eqeqeq
