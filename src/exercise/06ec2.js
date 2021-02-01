@@ -105,6 +105,13 @@ function Grid() {
 }
 Grid = React.memo(Grid)
 
+/*
+This is a code split of the cell and the cell implementation function. Cell changes, and that matters a lot
+in the speed of our application, but splitting out the stuff that doesn't change and memoizing CellImpl makes
+there be less overall change, which is faster. On my machine, locally, it's practically invisible, so it's
+the kind of thing that I think doesn't much matter. But the speed difference at 6x throttling on KCD's deployed
+version is actually pretty significant.
+*/
 function Cell({row, column}) {
   const state = useAppState()
   const cell = state.grid[row][column]
